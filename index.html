@@ -1,47 +1,122 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>POINT & EXPORT</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>POINT & EXPORT</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <!-- TOP BANNER -->
+  <header class="topBanner">
+    <img class="topBannerImg" src="img/banner.jpg" alt="POINT & EXPORT banner">
+  </header>
 
-<!-- TOP BANNER -->
-<div class="top-banner">
-  <img id="topBanner" src="banner.png" alt="TOP BANNER">
-</div>
+  <main class="container">
+    <!-- HEADER -->
+    <section class="hero">
+      <div class="brand">
+        <div class="brandMark">P&amp;E</div>
+        <div class="brandText">
+          <div class="brandTitle">POINT &amp; EXPORT</div>
+          <div class="brandSub" data-i18n="heroSub">教員向け カープログラム</div>
+        </div>
+      </div>
 
-<!-- MAIN -->
-<div class="main">
+      <div class="langWrap">
+        <button id="langToggle" class="langToggle" type="button" aria-label="language toggle">
+          <span class="langDot"></span>
+          <span id="langLabel">JA</span>
+        </button>
+      </div>
+    </section>
 
-  <h1>POINT & EXPORT</h1>
+    <!-- TAG TABS -->
+    <section class="tabs">
+      <button class="tab isActive" data-filter="all" type="button" data-i18n="tabAll">すべて</button>
+      <button class="tab" data-filter="compact" type="button" data-i18n="tabCompact">通勤・コンパクト</button>
+      <button class="tab" data-filter="family" type="button" data-i18n="tabFamily">ファミリー向け</button>
+    </section>
 
-  <p class="sub">
-    car export support
-  </p>
+    <!-- KEY MESSAGE -->
+    <section class="messageCard">
+      <h1 class="messageTitle" data-i18n="msgTitle">車は「買う」だけじゃありません。</h1>
+      <p class="messageSub" data-i18n="msgSub">まず車を見る。次にプランを見る。押し売りはしません。</p>
 
-  <!-- CENTER DOT -->
-  <div id="centerDot"></div>
+      <div class="miniCards">
+        <div class="miniCard">
+          <div class="miniTitle" data-i18n="mini1Title">写真は実在</div>
+          <div class="miniText" data-i18n="mini1Text">実際の写真とスペックを掲載。</div>
+        </div>
+        <div class="miniCard">
+          <div class="miniTitle" data-i18n="mini2Title">手順はシンプル</div>
+          <div class="miniText" data-i18n="mini2Text">見て、納得したら WhatsApp で確認。</div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <!-- MONTHLY RANKING -->
+    <section class="sectionHeader">
+      <h2 class="sectionTitle" data-i18n="rankTitle">今月のランキング</h2>
+      <div class="sectionHint" data-i18n="rankHint">タップで写真（スワイプ）と詳細が開きます。</div>
+    </section>
 
-<!-- SETTINGS MODAL -->
-<div id="setOverlay" class="hidden">
-  <div class="modal">
-    <h2>Settings</h2>
+    <section id="cards" class="cards"></section>
 
-    <button id="langJP">日本語</button>
-    <button id="langEN">English</button>
+    <!-- CONTACT (simple) -->
+    <section class="footerInfo">
+      <div class="footerLine">📍 Ejisu–Adadientam, Ghana</div>
+      <div class="footerLine">✉️ pointandexport@gmail.com</div>
+    </section>
+  </main>
 
-    <button id="closeSet">Close</button>
+  <!-- FLOATING WHATSAPP -->
+  <button id="waBtn" class="waBtn" type="button">
+    <span class="waDot"></span>
+    <span data-i18n="waBtn">WhatsAppで相談する</span>
+  </button>
+
+  <!-- MODAL -->
+  <div id="modalOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <button id="modalClose" class="modalClose" type="button" aria-label="close">×</button>
+
+      <div class="modalHead">
+        <div class="modalTitle" id="mTitle">Toyota Voxy</div>
+        <div class="pillRow" id="mPills"></div>
+      </div>
+
+      <div class="gallery">
+        <button class="gNav left" id="gPrev" type="button">‹</button>
+        <img id="gImg" class="gImg" src="" alt="car photo">
+        <button class="gNav right" id="gNext" type="button">›</button>
+        <div class="gHint" data-i18n="galleryHint">写真は左右で切替（スワイプもOK）</div>
+      </div>
+
+      <div class="specCard" id="mSpec"></div>
+
+      <div class="priceCard">
+        <div class="priceLeft">
+          <div class="priceLabel" data-i18n="monthlyLabel">月々の目安</div>
+          <div class="priceNote" id="mTotal">Total: GHS 100,000</div>
+        </div>
+        <div class="priceRight" id="mMonthly">GHS 1,190</div>
+      </div>
+
+      <div class="planCard">
+        <div class="planTitle" data-i18n="planA">プランA（通常の分割払い）</div>
+        <ul class="planList" id="mPlanA"></ul>
+      </div>
+
+      <div class="planCard isGreen">
+        <div class="planTitle" data-i18n="planB">プランB（スペシャル）</div>
+        <ul class="planList" id="mPlanB"></ul>
+      </div>
+
+      <button id="waBtnModal" class="waBtnModal" type="button" data-i18n="waBtn">WhatsAppで相談する</button>
+    </div>
   </div>
-</div>
 
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
