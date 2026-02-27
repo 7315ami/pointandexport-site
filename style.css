@@ -1,3 +1,4 @@
+
 :root{
   --bg:#000;
   --card:#0f1116;
@@ -377,4 +378,12 @@ body{
   .messageTitle{ font-size:26px; }
   .miniCards{ grid-template-columns:1fr; }
   .gImg{ height: 210px; }
+}
+
+ 
+/* 右端の「すべて」ボタンだけ小さく */
+.tab.small{
+  padding: 6px 10px;
+  font-size: 12px;
+  min-width: auto;
 }
