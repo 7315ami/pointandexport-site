@@ -1,390 +1,503 @@
+/* =========================
+   POINT & EXPORT - style.css (FULL REPLACE)
+   ========================= */
 
 :root{
-  --bg:#000;
-  --card:#0f1116;
-  --card2:#121622;
-  --text:#fff;
-  --muted:rgba(255,255,255,.72);
-  --line:rgba(255,255,255,.12);
+  --bg:#050607;
+  --card:#0c0f12;
+  --card2:#0a0c0f;
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.06);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.68);
+  --muted2:rgba(255,255,255,.55);
+  --blue:#4aa3ff;
   --green:#18c56e;
-  --pill:#1b2234;
-  --shadow: 0 16px 60px rgba(0,0,0,.55);
+
   --radius:22px;
+  --radius2:18px;
+  --shadow:0 12px 30px rgba(0,0,0,.55);
+
+  --containerPadX:14px;
+  --containerPadTop:12px;
 }
 
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
   margin:0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
   background:var(--bg);
   color:var(--text);
 }
 
+/* -------- Top banner -------- */
 .topBanner{
   width:100%;
   border-bottom:1px solid var(--line);
 }
 .topBannerImg{
   width:100%;
-  height:110px;
+  height:92px;            /* ← バナーを薄く（必要なら 72〜110 で調整） */
   object-fit:cover;
+  object-position:center;
   display:block;
 }
 
+/* -------- Layout container -------- */
 .container{
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 18px 14px 120px;
+  max-width:960px;
+  margin:0 auto;
+  padding: var(--containerPadTop) var(--containerPadX) 110px;
 }
 
-/* HERO */
+/* -------- HERO (logo/title/lang) -------- */
 .hero{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  margin: 14px 0 10px;
+  margin: 10px 0 10px;
 }
+
 .brand{
   display:flex;
   align-items:center;
   gap:12px;
+  min-width:0;
 }
+
 .brandMark{
-  width:56px;height:56px;
+  width:54px;
+  height:54px;
   border-radius:16px;
   background:rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:800;
+  border:1px solid var(--line2);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.brandText{
+  min-width:0;
 }
 .brandTitle{
-  font-size:18px;
-  letter-spacing:.5px;
-  font-weight:800;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.3px;
+  margin:0;
+  line-height:1.1;
 }
 .brandSub{
   font-size:13px;
-  color:var(--muted);
-  margin-top:3px;
+  color:var(--muted2);
+  margin:3px 0 0;
+  line-height:1.2;
 }
 
-/* lang toggle */
-.langWrap{ display:flex; align-items:center; }
+/* language toggle */
 .langToggle{
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  padding:10px 12px;
-  border-radius:999px;
   display:flex;
   align-items:center;
   gap:10px;
-}
-.langDot{
-  width:22px;height:22px;
-  border-radius:999px;
-  background:#2a79ff;
-  display:inline-block;
-}
-
-/* tabs */
-.tabs{
-  display:flex;
-  gap:8px;
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:8px;
-  overflow:auto;
-}
-.tab{
-  flex:1;
-  min-width: 140px;
-  border:0;
-  background:transparent;
-  color:var(--muted);
   padding:10px 14px;
   border-radius:999px;
-  font-weight:700;
-}
-.tab.isActive{
-  background:rgba(255,255,255,.12);
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.06);
   color:var(--text);
+  cursor:pointer;
+}
+.langDot{
+  width:18px; height:18px;
+  border-radius:50%;
+  background:var(--blue);
+  box-shadow:0 0 0 4px rgba(74,163,255,.15);
+}
+#langLabel{
+  font-weight:800;
+  letter-spacing:.4px;
+  font-size:13px;
 }
 
-/* message card */
+/* -------- Tabs -------- */
+.tabs{
+  display:flex;
+  align-items:stretch;
+  gap:10px;
+  padding:10px;
+  border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.05);
+  box-shadow: var(--shadow);
+  margin: 10px 0 12px;
+}
+
+.tab{
+  flex:1;
+  appearance:none;
+  border:0;
+  cursor:pointer;
+
+  border-radius:999px;
+  background:transparent;
+  color:var(--muted);
+  font-weight:800;
+  font-size:14px;
+  padding:12px 12px;
+  min-height:44px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  white-space:normal;      /* ← 変に1文字だけ改行されるのを避ける */
+  line-height:1.05;
+}
+
+.tab.isActive{
+  background:rgba(255,255,255,.10);
+  color:var(--text);
+  border:1px solid var(--line2);
+}
+
+.tab.small{
+  flex:0 0 auto;          /* 右端だけ幅を小さく */
+  padding:8px 12px;
+  font-size:12px;
+  min-height:40px;
+}
+
+/* -------- Message card -------- */
 .messageCard{
-  margin:14px 0 18px;
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line2);
   border-radius:var(--radius);
-  padding:16px;
+  box-shadow: var(--shadow);
+  padding:18px 18px;
+  margin: 12px 0 12px;
 }
+
 .messageTitle{
-  font-size:28px;
-  margin:0 0 8px;
-  line-height:1.12;
+  margin:0 0 10px;
+  font-weight:950;
+  letter-spacing:-.2px;
+  line-height:1.05;
+
+  /* 変な改行を減らす */
+  text-wrap:balance;
+  overflow-wrap: anywhere;
+  word-break: keep-all; /* 日本語の1文字落ちを減らす */
 }
+
 .messageSub{
-  margin:0 0 14px;
+  margin:0;
   color:var(--muted);
   font-size:14px;
-}
-.miniCards{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:10px;
-}
-.miniCard{
-  border:1px solid var(--line);
-  background:rgba(0,0,0,.22);
-  border-radius:18px;
-  padding:12px;
-}
-.miniTitle{ font-weight:800; margin-bottom:6px; }
-.miniText{ color:var(--muted); font-size:13px; }
+  line-height:1.35;
 
-/* section header */
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+
+/* -------- Section header (Monthly Ranking) -------- */
 .sectionHeader{
   display:flex;
+  align-items:flex-end;
   justify-content:space-between;
-  align-items:baseline;
-  gap:10px;
-  margin: 10px 0 10px;
+  gap:12px;
+  margin: 12px 0 10px;
+  padding: 6px 2px 0;
 }
-.sectionTitle{ margin:0; font-size:18px; }
-.sectionHint{ color:var(--muted); font-size:12px; }
 
-/* cards */
+.sectionTitle{
+  margin:0;
+  font-weight:950;
+  letter-spacing:-.2px;
+  line-height:1.05;
+
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+
+.sectionHint{
+  margin:0;
+  color:var(--muted2);
+  font-size:13px;
+  line-height:1.25;
+  text-align:right;
+
+  text-wrap:balance;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+  max-width:46%;
+}
+
+/* -------- Cards container -------- */
 .cards{
   display:flex;
   flex-direction:column;
   gap:12px;
+  margin: 10px 0 0;
 }
+
+/* A single car card (JSで作ってる想定) */
 .card{
-  background:rgba(255,255,255,.06);
-  border:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line2);
   border-radius:var(--radius);
-  padding:12px;
-  display:flex;
-  align-items:center;
+  box-shadow: var(--shadow);
+  padding:14px;
+  display:grid;
+  grid-template-columns: 54px 86px 1fr 44px;
   gap:12px;
+  align-items:center;
 }
-.rankNum{
-  width:44px;height:44px;
+
+.rankBadge{
+  width:54px; height:54px;
   border-radius:16px;
-  background:rgba(255,255,255,.09);
-  display:flex;align-items:center;justify-content:center;
-  font-weight:900;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--line2);
+  display:grid;
+  place-items:center;
+  color:var(--blue);
+  font-weight:950;
 }
+
 .thumb{
-  width:74px;height:54px;
+  width:86px;
+  height:64px;
   border-radius:16px;
-  border:1px solid var(--line);
-  object-fit:cover;
-  background:#111;
+  overflow:hidden;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.04);
+  display:grid;
+  place-items:center;
 }
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
 .cardMain{
-  flex:1;
   min-width:0;
 }
 .cardTitle{
-  font-weight:900;
-  margin:0 0 6px;
-  font-size:16px;
+  margin:0 0 8px;
+  font-weight:950;
+  color:var(--blue);
+  letter-spacing:-.1px;
+  line-height:1.1;
+
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+  text-wrap:balance;
 }
+
 .pills{
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
+  gap:8px;
 }
 .pill{
-  background:rgba(255,255,255,.07);
-  border:1px solid var(--line);
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.05);
   color:var(--muted);
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
+  font-weight:800;
+  font-size:13px;
+  line-height:1;
 }
-.pill.isNo{
-  background:rgba(42,121,255,.14);
-  color:#cfe1ff;
-  border-color:rgba(42,121,255,.25);
-}
-.chev{
-  width:40px;height:40px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;
+.pill.blue{
+  background:rgba(74,163,255,.12);
+  border-color:rgba(74,163,255,.25);
+  color:rgba(160,210,255,.98);
 }
 
-/* footer info */
+.goBtn{
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+
+/* -------- Footer info -------- */
 .footerInfo{
-  margin-top:18px;
-  color:var(--muted);
+  margin: 16px 0 0;
+  padding: 8px 4px 0;
+  color:var(--muted2);
   font-size:13px;
 }
-.footerLine{ margin:6px 0; }
+.footerLine{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:6px 0;
+}
 
-/* floating whatsapp */
+/* -------- Floating WhatsApp button -------- */
 .waBtn{
   position:fixed;
   left:50%;
   transform:translateX(-50%);
   bottom:18px;
-  z-index:20;
-  border:0;
-  border-radius:999px;
-  padding:16px 18px;
-  font-weight:900;
-  background:var(--green);
-  color:#03220f;
-  box-shadow: var(--shadow);
+  z-index:50;
+
   display:flex;
   align-items:center;
-  gap:10px;
+  justify-content:center;
+  gap:12px;
+
+  width:min(520px, calc(100% - 26px));
+  padding:14px 16px;
+
+  border:0;
+  border-radius:999px;
+  background:var(--green);
+  color:#03220f;
+  font-weight:950;
+  box-shadow:0 14px 40px rgba(0,0,0,.55);
+  cursor:pointer;
 }
 .waDot{
-  width:12px;height:12px;border-radius:999px;
-  background:#fff;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 0 0 5px rgba(255,255,255,.18);
 }
 
-/* modal */
-.hidden{ display:none; }
+/* -------- Modal (if you use it) -------- */
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.68);
-  z-index:50;
-  padding:16px;
-  overflow:auto;
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index:100;
 }
+.hidden{ display:none !important; }
+
 .modal{
-  max-width:720px;
-  margin: 24px auto;
-  background:linear-gradient(180deg, rgba(18,22,34,.98), rgba(8,10,14,.98));
-  border:1px solid var(--line);
-  border-radius:28px;
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:14px;
+  width:min(900px, calc(100% - 22px));
+  background:rgba(12,15,18,.92);
+  border:1px solid var(--line2);
+  border-radius:26px;
+  box-shadow:0 22px 60px rgba(0,0,0,.75);
+  z-index:120;
   padding:14px;
-  box-shadow: var(--shadow);
-  position:relative;
 }
+
 .modalClose{
   position:absolute;
-  top:12px; right:12px;
+  right:10px; top:10px;
   width:44px; height:44px;
   border-radius:999px;
-  border:1px solid var(--line);
+  border:1px solid var(--line2);
   background:rgba(255,255,255,.06);
   color:var(--text);
-  font-size:22px;
+  cursor:pointer;
 }
-.modalHead{ padding: 10px 6px 8px; }
-.modalTitle{ font-size:22px; font-weight:900; margin-bottom:10px; }
-.pillRow{ display:flex; flex-wrap:wrap; gap:6px; }
+
+.modalHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding: 6px 50px 6px 6px;
+}
+
+.modalTitle{
+  font-weight:950;
+  font-size:18px;
+  margin:0;
+  line-height:1.15;
+  overflow-wrap:anywhere;
+  word-break:keep-all;
+}
+
+.pillRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
 
 .gallery{
+  margin-top:12px;
+  border:1px solid var(--line2);
   border-radius:22px;
-  border:1px solid var(--line);
-  background:rgba(0,0,0,.2);
-  padding:10px;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
   position:relative;
 }
+
 .gImg{
   width:100%;
-  height: 240px;
-  border-radius:18px;
+  height:220px;
   object-fit:cover;
   display:block;
 }
+
 .gNav{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:42px;height:42px;
+  width:44px; height:44px;
   border-radius:999px;
-  border:1px solid var(--line);
+  border:1px solid var(--line2);
   background:rgba(0,0,0,.35);
   color:var(--text);
-  font-size:22px;
+  cursor:pointer;
 }
-.gNav.left{ left:12px; }
-.gNav.right{ right:12px; }
+.gNav.left{ left:10px; }
+.gNav.right{ right:10px; }
+
 .gHint{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
+  padding:10px 12px;
+  color:var(--muted2);
+  font-size:13px;
 }
 
-.specCard{
-  margin-top:12px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:12px;
-  background:rgba(255,255,255,.04);
-  color:var(--muted);
-}
-
-.priceCard{
-  margin-top:12px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:14px;
-  background:rgba(255,255,255,.04);
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:10px;
-}
-.priceLabel{ font-weight:900; color:var(--muted); }
-.priceNote{ margin-top:6px; color:var(--muted); }
-.priceRight{
-  font-size:32px;
-  font-weight:1000;
-}
-
-.planCard{
-  margin-top:12px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:14px;
-  background:rgba(255,255,255,.04);
-}
-.planCard.isGreen{
-  border-color: rgba(24,197,110,.35);
-  background: rgba(24,197,110,.10);
-}
-.planTitle{ font-weight:900; margin-bottom:8px; }
-.planList{ margin:0; padding-left:18px; color:var(--muted); }
-.planList li{ margin:6px 0; }
-
-.waBtnModal{
-  width:100%;
-  margin-top:14px;
-  border:0;
-  border-radius:18px;
-  padding:16px;
-  font-weight:1000;
-  background:var(--green);
-  color:#03220f;
-}
-
+/* -------- Responsive tweaks -------- */
 @media (max-width:520px){
-  .messageTitle{ font-size:26px; }
-  .miniCards{ grid-template-columns:1fr; }
-  .gImg{ height: 210px; }
-}
+  .topBannerImg{ height:82px; } /* さらに薄くしたければ 68〜90 */
 
- 
-/* 右端の「すべて」ボタンだけ小さく */
-.tab.small{
-  padding: 6px 10px;
-  font-size: 12px;
-  min-width: auto;
+  .brandMark{ width:50px; height:50px; border-radius:16px; }
+  .brandTitle{ font-size:18px; }
+  .brandSub{ font-size:12px; }
+
+  .tab{ font-size:13px; padding:11px 10px; min-height:42px; }
+  .tab.small{ padding:7px 10px; font-size:12px; min-height:38px; }
+
+  .messageCard{ padding:16px; }
+  .messageTitle{ font-size: clamp(26px, 7.2vw, 40px); }
+  .messageSub{ font-size: clamp(12px, 3.7vw, 15px); }
+
+  .sectionTitle{ font-size: clamp(18px, 5.4vw, 28px); }
+  .sectionHint{ font-size: clamp(12px, 3.4vw, 13px); max-width:52%; }
+
+  .card{
+    grid-template-columns: 50px 78px 1fr 42px;
+    gap:10px;
+    padding:12px;
+  }
+  .rankBadge{ width:50px; height:50px; border-radius:16px; }
+  .thumb{ width:78px; height:58px; }
+  .pill{ padding:7px 10px; font-size:12px; }
 }
