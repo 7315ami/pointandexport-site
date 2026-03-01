@@ -27,7 +27,8 @@ body{
 }
 .topBannerImg{
   width:100%;
-  height:auto;
+  height:110px;
+  object-fit:cover;
   display:block;
 }
 
