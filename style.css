@@ -1,63 +1,63 @@
-/* =========================
+/* =========================================================
    POINT & EXPORT - style.css (FULL REPLACE)
-   ========================= */
+   목적:
+   - バナーを薄く（スマホで邪魔にならない）
+   - タブ/ヘッダーを上に詰めて「ランキング」が見えやすい
+   - 文字が「2行目に落ちる/…になる」問題を根本解消
+   - EN/JAどちらでも破綻しない
+   ========================================================= */
 
 :root{
-  --bg:#050607;
-  --card:#0c0f12;
-  --card2:#0a0c0f;
-  --line:rgba(255,255,255,.10);
-  --line2:rgba(255,255,255,.06);
+  --bg:#0b0f14;
+  --card:#111820;
+  --card2:#0f161e;
+  --line:rgba(255,255,255,.08);
+  --line2:rgba(255,255,255,.12);
   --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.68);
-  --muted2:rgba(255,255,255,.55);
-  --blue:#4aa3ff;
+  --muted:rgba(255,255,255,.72);
+  --muted2:rgba(255,255,255,.58);
+  --blue:#2f86ff;
   --green:#18c56e;
-
-  --radius:22px;
-  --radius2:18px;
-  --shadow:0 12px 30px rgba(0,0,0,.55);
-
-  --containerPadX:14px;
-  --containerPadTop:12px;
+  --shadow:0 18px 50px rgba(0,0,0,.55);
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
+html,body{
   margin:0;
-  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  padding:0;
   background:var(--bg);
   color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
 }
 
-/* -------- Top banner -------- */
+/* ------------------ Top banner ------------------ */
 .topBanner{
   width:100%;
   border-bottom:1px solid var(--line);
+  background:rgba(0,0,0,.35);
 }
 .topBannerImg{
   width:100%;
-  height:92px;            /* ← バナーを薄く（必要なら 72〜110 で調整） */
+  height:84px;          /* ★ 薄くする（スマホ優先） */
+  display:block;
   object-fit:cover;
   object-position:center;
-  display:block;
 }
 
-/* -------- Layout container -------- */
+/* ------------------ Container ------------------ */
 .container{
   max-width:960px;
   margin:0 auto;
-  padding: var(--containerPadTop) var(--containerPadX) 110px;
+  padding:12px 14px 110px;  /* 下のWhatsAppボタン分 */
 }
 
-/* -------- HERO (logo/title/lang) -------- */
+/* ------------------ Hero (logo/title/lang) ------------------ */
 .hero{
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:12px;
-  margin: 10px 0 10px;
+  margin:10px 0 8px;      /* ★ 上を詰める */
 }
 
 .brand{
@@ -66,19 +66,18 @@ body{
   gap:12px;
   min-width:0;
 }
-
 .brandMark{
-  width:54px;
-  height:54px;
+  width:58px;
+  height:58px;
   border-radius:16px;
-  background:rgba(255,255,255,.08);
   border:1px solid var(--line2);
+  background:rgba(255,255,255,.06);
   display:grid;
   place-items:center;
   font-weight:900;
   letter-spacing:.5px;
+  flex:0 0 auto;
 }
-
 .brandText{
   min-width:0;
 }
@@ -86,197 +85,195 @@ body{
   font-size:20px;
   font-weight:900;
   letter-spacing:.3px;
-  margin:0;
   line-height:1.1;
+  margin:0;
 }
 .brandSub{
   font-size:13px;
   color:var(--muted2);
-  margin:3px 0 0;
+  margin-top:4px;
   line-height:1.2;
 }
 
-/* language toggle */
 .langToggle{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
   border:1px solid var(--line2);
   background:rgba(255,255,255,.06);
   color:var(--text);
-  cursor:pointer;
-}
-.langDot{
-  width:18px; height:18px;
-  border-radius:50%;
-  background:var(--blue);
-  box-shadow:0 0 0 4px rgba(74,163,255,.15);
-}
-#langLabel{
-  font-weight:800;
-  letter-spacing:.4px;
-  font-size:13px;
-}
-
-/* -------- Tabs -------- */
-.tabs{
-  display:flex;
-  align-items:stretch;
-  gap:10px;
-  padding:10px;
   border-radius:999px;
-  border:1px solid var(--line2);
-  background:rgba(255,255,255,.05);
-  box-shadow: var(--shadow);
-  margin: 10px 0 12px;
-}
-
-.tab{
-  flex:1;
-  appearance:none;
-  border:0;
-  cursor:pointer;
-
-  border-radius:999px;
-  background:transparent;
-  color:var(--muted);
-  font-weight:800;
-  font-size:14px;
-  padding:12px 12px;
-  min-height:44px;
-
+  padding:10px 14px;
+  min-width:74px;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-
-  white-space:normal;      /* ← 変に1文字だけ改行されるのを避ける */
-  line-height:1.05;
+  gap:10px;
+  cursor:pointer;
+}
+.langDot{
+  width:14px;
+  height:14px;
+  border-radius:999px;
+  background:var(--blue);
+  display:inline-block;
+}
+#langLabel{
+  font-weight:800;
+  letter-spacing:.3px;
 }
 
+/* ------------------ Tabs ------------------ */
+.tabs{
+  width:100%;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.04);
+  border-radius:999px;
+  padding:6px;
+  display:flex;
+  gap:6px;
+  align-items:stretch;
+  margin:8px 0 10px;   /* ★ 上に詰める */
+}
+
+.tab{
+  flex:1 1 0;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  border-radius:999px;
+  padding:12px 10px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  white-space:normal;          /* ★ 改行OK */
+  line-height:1.1;
+}
 .tab.isActive{
-  background:rgba(255,255,255,.10);
+  background:rgba(255,255,255,.08);
   color:var(--text);
-  border:1px solid var(--line2);
+  border:1px solid rgba(255,255,255,.12);
 }
 
+/* 右端(All/すべて)だけ小さく */
 .tab.small{
-  flex:0 0 auto;          /* 右端だけ幅を小さく */
-  padding:8px 12px;
-  font-size:12px;
-  min-height:40px;
+  flex:0 0 auto;
+  padding:10px 10px;
+  font-size:13px;
+  min-width:58px;
 }
 
-/* -------- Message card -------- */
+/* ------------------ Message Card ------------------ */
 .messageCard{
-  background:rgba(255,255,255,.05);
   border:1px solid var(--line2);
-  border-radius:var(--radius);
-  box-shadow: var(--shadow);
-  padding:18px 18px;
-  margin: 12px 0 12px;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-radius:26px;
+  padding:18px 18px;          /* ★ 余白控えめ */
+  box-shadow:var(--shadow);
+  margin:10px 0 12px;         /* ★ ランキングを上へ */
 }
 
 .messageTitle{
   margin:0 0 10px;
+  font-size:38px;
   font-weight:950;
-  letter-spacing:-.2px;
-  line-height:1.05;
+  line-height:1.1;
+  letter-spacing:-.3px;
 
-  /* 変な改行を減らす */
-  text-wrap:balance;
-  overflow-wrap: anywhere;
-  word-break: keep-all; /* 日本語の1文字落ちを減らす */
+  /* ★ 2行目落ち/…問題の根本対策 */
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
 }
 
 .messageSub{
   margin:0;
   color:var(--muted);
-  font-size:14px;
+  font-size:16px;
   line-height:1.35;
 
-  text-wrap:balance;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
   overflow-wrap:anywhere;
-  word-break:keep-all;
 }
 
-/* -------- Section header (Monthly Ranking) -------- */
+/* ------------------ Section header (Monthly Ranking) ------------------ */
 .sectionHeader{
   display:flex;
   align-items:flex-end;
   justify-content:space-between;
-  gap:12px;
-  margin: 12px 0 10px;
-  padding: 6px 2px 0;
+  gap:14px;
+  margin:8px 0 10px;          /* ★ 上へ */
 }
 
 .sectionTitle{
   margin:0;
+  font-size:34px;
   font-weight:950;
   letter-spacing:-.2px;
   line-height:1.05;
 
-  text-wrap:balance;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
   overflow-wrap:anywhere;
-  word-break:keep-all;
 }
-
 .sectionHint{
-  margin:0;
+  margin:0 0 4px;
   color:var(--muted2);
-  font-size:13px;
+  font-size:14px;
   line-height:1.25;
   text-align:right;
+  max-width:52%;
 
-  text-wrap:balance;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
   overflow-wrap:anywhere;
-  word-break:keep-all;
-  max-width:46%;
 }
 
-/* -------- Cards container -------- */
+/* ------------------ Cards list ------------------ */
 .cards{
   display:flex;
   flex-direction:column;
   gap:12px;
-  margin: 10px 0 0;
+  margin-top:6px;
 }
 
-/* A single car card (JSで作ってる想定) */
 .card{
-  background:rgba(255,255,255,.05);
   border:1px solid var(--line2);
-  border-radius:var(--radius);
-  box-shadow: var(--shadow);
+  background:rgba(255,255,255,.04);
+  border-radius:28px;
   padding:14px;
+  box-shadow:var(--shadow);
   display:grid;
-  grid-template-columns: 54px 86px 1fr 44px;
-  gap:12px;
+  grid-template-columns:54px 88px 1fr 44px;
+  gap:10px;
   align-items:center;
 }
 
 .rankBadge{
-  width:54px; height:54px;
-  border-radius:16px;
-  background:rgba(255,255,255,.07);
+  width:54px;
+  height:54px;
+  border-radius:18px;
   border:1px solid var(--line2);
+  background:rgba(255,255,255,.06);
   display:grid;
   place-items:center;
-  color:var(--blue);
   font-weight:950;
+  color:var(--blue);
+  font-size:18px;
 }
 
 .thumb{
-  width:86px;
+  width:88px;
   height:64px;
-  border-radius:16px;
-  overflow:hidden;
+  border-radius:18px;
   border:1px solid var(--line2);
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.05);
   display:grid;
   place-items:center;
+  overflow:hidden;
 }
 .thumb img{
   width:100%;
@@ -288,105 +285,79 @@ body{
 .cardMain{
   min-width:0;
 }
-.cardTitle{
-  margin:0 0 8px;
+.carName{
+  margin:0 0 10px;
   font-weight:950;
+  font-size:22px;
   color:var(--blue);
-  letter-spacing:-.1px;
   line-height:1.1;
 
+  white-space:normal;
   overflow-wrap:anywhere;
-  word-break:keep-all;
-  text-wrap:balance;
 }
-
 .pills{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
 }
 .pill{
-  padding:8px 12px;
-  border-radius:999px;
   border:1px solid var(--line2);
   background:rgba(255,255,255,.05);
-  color:var(--muted);
-  font-weight:800;
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:850;
   font-size:13px;
   line-height:1;
 }
-.pill.blue{
-  background:rgba(74,163,255,.12);
-  border-color:rgba(74,163,255,.25);
-  color:rgba(160,210,255,.98);
-}
 
-.goBtn{
+.chev{
   width:44px;
   height:44px;
   border-radius:999px;
   border:1px solid var(--line2);
-  background:rgba(255,255,255,.05);
+  background:rgba(255,255,255,.06);
   color:var(--text);
   display:grid;
   place-items:center;
-  cursor:pointer;
+  font-size:22px;
 }
 
-/* -------- Footer info -------- */
+/* ------------------ Footer ------------------ */
 .footerInfo{
-  margin: 16px 0 0;
-  padding: 8px 4px 0;
+  margin-top:18px;
+  padding:14px 2px 0;
+  border-top:1px solid var(--line);
   color:var(--muted2);
-  font-size:13px;
 }
 .footerLine{
   display:flex;
   gap:10px;
   align-items:center;
-  margin:6px 0;
+  padding:6px 0;
+  font-size:14px;
 }
 
-/* -------- Floating WhatsApp button -------- */
+/* ------------------ WhatsApp (bottom) ------------------ */
 .waBtn{
   position:fixed;
   left:50%;
   transform:translateX(-50%);
-  bottom:18px;
-  z-index:50;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-
-  width:min(520px, calc(100% - 26px));
-  padding:14px 16px;
-
+  bottom:16px;
+  width:min(900px, calc(100% - 24px));
   border:0;
   border-radius:999px;
+  padding:18px 18px;
+  font-weight:950;
+  font-size:18px;
   background:var(--green);
   color:#03220f;
-  font-weight:950;
-  box-shadow:0 14px 40px rgba(0,0,0,.55);
+  box-shadow:0 18px 50px rgba(0,0,0,.6);
   cursor:pointer;
-}
-.waDot{
-  width:16px;
-  height:16px;
-  border-radius:50%;
-  background:rgba(255,255,255,.9);
-  box-shadow:0 0 0 5px rgba(255,255,255,.18);
+  z-index:130;
 }
 
-/* -------- Modal (if you use it) -------- */
-.overlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  backdrop-filter: blur(6px);
-  z-index:100;
-}
+/* Modal (もし使っているなら) */
 .hidden{ display:none !important; }
 
 .modal{
@@ -402,7 +373,6 @@ body{
   z-index:120;
   padding:14px;
 }
-
 .modalClose{
   position:absolute;
   right:10px; top:10px;
@@ -413,190 +383,61 @@ body{
   color:var(--text);
   cursor:pointer;
 }
-
 .modalHead{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
-  padding: 6px 50px 6px 6px;
+  padding:6px 50px 6px 6px;
 }
 
-.modalTitle{
-  font-weight:950;
-  font-size:18px;
-  margin:0;
-  line-height:1.15;
-  overflow-wrap:anywhere;
-  word-break:keep-all;
-}
-
-.pillRow{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
-}
-
-.gallery{
-  margin-top:12px;
-  border:1px solid var(--line2);
-  border-radius:22px;
-  overflow:hidden;
-  background:rgba(255,255,255,.03);
-  position:relative;
-}
-
-.gImg{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
-}
-
-.gNav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:44px; height:44px;
-  border-radius:999px;
-  border:1px solid var(--line2);
-  background:rgba(0,0,0,.35);
-  color:var(--text);
-  cursor:pointer;
-}
-.gNav.left{ left:10px; }
-.gNav.right{ right:10px; }
-
-.gHint{
-  padding:10px 12px;
-  color:var(--muted2);
-  font-size:13px;
-}
-
-/* -------- Responsive tweaks -------- */
+/* ------------------ Small screens (<=520px) ------------------ */
 @media (max-width:520px){
-  .topBannerImg{ height:82px; } /* さらに薄くしたければ 68〜90 */
 
-  .brandMark{ width:50px; height:50px; border-radius:16px; }
+  .topBannerImg{ height:78px; }  /* ★さらに薄く */
+
+  .container{ padding:10px 12px 104px; }
+
+  .brandMark{ width:52px; height:52px; border-radius:16px; }
   .brandTitle{ font-size:18px; }
   .brandSub{ font-size:12px; }
 
-  .tab{ font-size:13px; padding:11px 10px; min-height:42px; }
-  .tab.small{ padding:7px 10px; font-size:12px; min-height:38px; }
+  .langToggle{ padding:9px 12px; min-width:70px; }
 
-  .messageCard{ padding:16px; }
-  .messageTitle{ font-size: clamp(26px, 7.2vw, 40px); }
-  .messageSub{ font-size: clamp(12px, 3.7vw, 15px); }
+  .tabs{ padding:6px; margin:8px 0 10px; }
+  .tab{ font-size:13px; padding:11px 10px; }
+  .tab.small{ padding:9px 10px; font-size:12px; min-width:54px; }
 
-  .sectionTitle{ font-size: clamp(18px, 5.4vw, 28px); }
-  .sectionHint{ font-size: clamp(12px, 3.4vw, 13px); max-width:52%; }
-
-  .card{
-    grid-template-columns: 50px 78px 1fr 42px;
-    gap:10px;
-    padding:12px;
-  }
-  .rankBadge{ width:50px; height:50px; border-radius:16px; }
-  .thumb{ width:78px; height:58px; }
-  .pill{ padding:7px 10px; font-size:12px; }
-}
-/* ====== TEXT / LAYOUT FIX ====== */
-
-.sectionHeader{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.sectionTitle{
-  white-space:nowrap;
-  flex:0 0 auto;
-}
-
-.sectionHint{
-  flex:1 1 auto;
-  text-align:right;
-  min-width:0;
-}
-
-.messageTitle{
-  text-wrap: balance;
-}
-
-h2[data-i18n="rankTitle"]{
-  font-size:20px;
-  line-height:1.2;
-}
-
-@media (max-width:520px){
-
-  .topBannerImg{
-    height:82px;
-    object-fit:cover;
-  }
-
-  .tab{
-    font-size:13px;
-    padding:11px 10px;
-  }
-
-  .tab.small{
-    padding:7px 10px;
-    font-size:12px;
-  }
-
-  .messageCard{
-    padding:16px;
-  }
-
-  .card{
-    gap:10px;
-    padding:12px;
-  }
-
-  .thumb{
-    width:78px;
-    height:58px;
-  }
-}
-/* ===== FIX (append-only) : no wrap + banner thinner ===== */
-
-/* ① バナーを薄く（常に） */
-.topBannerImg{
-  height: 82px !important;
-  object-fit: cover !important;
-  display:block !important;
-}
-
-/* ② ここが2行になる問題を強制的に止める（EN/JAどっちも） */
-.messageTitle,
-.messageSub,
-.sectionTitle,
-.sectionHint{
-  white-space: nowrap !important;      /* 改行しない */
-  overflow: hidden !important;         /* はみ出し隠す */
-  text-overflow: ellipsis !important;  /* … にする */
-  max-width: 100% !important;
-}
-
-/* ③ スマホで文字が大きすぎて1行に収まらない時の保険（520px以下） */
-@media (max-width:520px){
+  .messageCard{ padding:16px; margin:10px 0 10px; }
   .messageTitle{
-    font-size: clamp(22px, 6.2vw, 38px) !important;
-    line-height: 1.15 !important;
+    font-size:clamp(26px, 7.2vw, 38px);
+    line-height:1.12;
   }
   .messageSub{
-    font-size: clamp(12px, 3.5vw, 16px) !important;
-    line-height: 1.25 !important;
+    font-size:clamp(12px, 3.7vw, 16px);
+    line-height:1.32;
   }
-  .sectionTitle{
-    font-size: clamp(18px, 5.2vw, 28px) !important;
-    line-height: 1.15 !important;
-  }
+
+  .sectionTitle{ font-size:clamp(22px, 6.2vw, 34px); }
   .sectionHint{
-    font-size: clamp(12px, 3.2vw, 15px) !important;
-    line-height: 1.25 !important;
+    font-size:clamp(11px, 3.2vw, 14px);
+    max-width:54%;
   }
+
+  .card{
+    grid-template-columns:50px 78px 1fr 42px;
+    padding:12px;
+    gap:10px;
+  }
+  .rankBadge{ width:50px; height:50px; border-radius:16px; font-size:17px; }
+  .thumb{ width:78px; height:58px; border-radius:16px; }
+  .carName{ font-size:19px; }
+  .pill{ padding:7px 10px; font-size:12px; }
+  .chev{ width:42px; height:42px; font-size:22px; }
+
+  .waBtn{ padding:16px 16px; font-size:17px; }
 }
+
+/* =========================================================
+   END
+   ========================================================= */
