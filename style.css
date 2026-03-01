@@ -501,3 +501,63 @@ body{
   .thumb{ width:78px; height:58px; }
   .pill{ padding:7px 10px; font-size:12px; }
 }
+/* ====== TEXT / LAYOUT FIX ====== */
+
+.sectionHeader{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.sectionTitle{
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+
+.sectionHint{
+  flex:1 1 auto;
+  text-align:right;
+  min-width:0;
+}
+
+.messageTitle{
+  text-wrap: balance;
+}
+
+h2[data-i18n="rankTitle"]{
+  font-size:20px;
+  line-height:1.2;
+}
+
+@media (max-width:520px){
+
+  .topBannerImg{
+    height:82px;
+    object-fit:cover;
+  }
+
+  .tab{
+    font-size:13px;
+    padding:11px 10px;
+  }
+
+  .tab.small{
+    padding:7px 10px;
+    font-size:12px;
+  }
+
+  .messageCard{
+    padding:16px;
+  }
+
+  .card{
+    gap:10px;
+    padding:12px;
+  }
+
+  .thumb{
+    width:78px;
+    height:58px;
+  }
+}
